@@ -6,6 +6,7 @@ public class Main {
 
   public static void main(String[] args) {
 
+    // empleados
     ArrayList<Empleado> listaEmpleados = new ArrayList<>();
 
     String agregarOtroEmpleado = "Y";
@@ -89,6 +90,8 @@ public class Main {
     String datosEmpleados = sb.toString();
 
     System.out.println(datosEmpleados);
+
+    // nominas
 
   }
 

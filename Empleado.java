@@ -38,6 +38,8 @@ public class Empleado {
     return "Normal";
   }
 
+  // metodo getter para tarifa por hora:
+
   public float getTarifaPorHora() {
     return tarifaPorHora;
   }
@@ -82,6 +84,11 @@ class EmpleadoPorHora extends Empleado {
     return "Por horas";
   }
 
+  // getter tarifa por hr extra:
+  public float getTarifaPorHoraExtra() {
+    return tarifaHrExtra;
+  }
+
   @Override
   public String lineaEmpleado() {
     // Crear la linea con los datos
@@ -106,6 +113,11 @@ class EmpleadoAsalariado extends Empleado {
     return "Asalariado";
   }
 
+  // getter salarioMensualFijo:
+  public float getSalarioMensualFijo() {
+    return salarioMensualFijo;
+  }
+
   @Override
   public String lineaEmpleado() {
     // Crear la linea con los datos
@@ -118,7 +130,6 @@ class EmpleadoAsalariado extends Empleado {
 class EmpleadoPorComision extends Empleado {
   // atributo:
   private float porcentajeComision;
-  public float ventasTotales;
 
   // constructor:
   public EmpleadoPorComision(String nombre, String apellidos, float tarifaPorHora, float porcentajeComision) {
@@ -126,15 +137,14 @@ class EmpleadoPorComision extends Empleado {
     this.porcentajeComision = porcentajeComision;
   }
 
-  // metodo para calcular comision:
-  public float calcularComision(float ventas) {
-    this.ventasTotales += ventas;
-    return porcentajeComision * ventas / 100;
-  }
-
   @Override
   public String tipo() {
     return "A Comisión";
+  }
+
+  // getter porcentajeComision:
+  public float getPorcentajeComision() {
+    return porcentajeComision;
   }
 
   @Override
