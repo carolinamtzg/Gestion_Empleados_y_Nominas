@@ -10,29 +10,7 @@ public class Main {
     ArrayList<Empleado> listaEmpleados = new ArrayList<>();
     ArrayList<Nomina> listaNominas = new ArrayList<>();
 
-    // BORRAR DESDE AQUI
-    Empleado tempEmpleadoNormal = new Empleado("Jose", "Avila", 10);
-    Nomina tempNominaNormal = new Nomina(tempEmpleadoNormal, 20, 0, 0);
-    listaEmpleados.add(tempEmpleadoNormal);
-    listaNominas.add(tempNominaNormal);
-
-    Empleado tempEmpleadoPorHoras = new EmpleadoPorHora("Caro", "Martinez", 10, 15);
-    Nomina tempNominaPorHoras = new Nomina(tempEmpleadoPorHoras, 30, 14, 0);
-    listaEmpleados.add(tempEmpleadoPorHoras);
-    listaNominas.add(tempNominaPorHoras);
-
-    Empleado tempEmpleadoAsalariado = new EmpleadoAsalariado("Natalia", "Martinez", 0, 2000);
-    Nomina tempNominaAsalariado = new Nomina(tempEmpleadoAsalariado, 0, 0, 0);
-    listaEmpleados.add(tempEmpleadoAsalariado);
-    listaNominas.add(tempNominaAsalariado);
-
-    Empleado tempEmpleadoComision = new EmpleadoPorComision("Isabela", "Martinez", 0, 10);
-    Nomina tempNominaComision = new Nomina(tempEmpleadoComision, 0, 0, 50000);
-    listaEmpleados.add(tempEmpleadoComision);
-    listaNominas.add(tempNominaComision);
-    // BORRAR HASTA AQUI
-
-    String agregarOtroEmpleado = "N"; // Cambiar a Y
+    String agregarOtroEmpleado = "Y";
 
     while (agregarOtroEmpleado.equals("Y")) {
       System.out.print("Ingrese los datos del empleado: \n");
@@ -119,7 +97,7 @@ public class Main {
       agregarOtroEmpleado = scanner.next().toUpperCase();
     }
 
-    // Imprimir lo comun o las cabezeras
+    // Imprimir lo comun del print:
     StringBuilder sb = new StringBuilder();
     sb.append("\t 1\t 2\t 3\t 4\t 5\t 6\t 7\t 8\t 9\t 10\t 10\t 11\t 12\t 13\t 14\t 15\t\n");
     sb.append(

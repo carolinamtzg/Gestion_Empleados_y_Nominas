@@ -46,7 +46,7 @@ public class Empleado {
 
   public String lineaEmpleado() {
     // Crear la linea con los datos
-    return String.format("%s\t\t%s\t\t\t\t %.2f\t\t\t %.2f\t\t\t %.2f\t\t %.2f", nombreFormateado(), tipo(),
+    return String.format("%s\t\t%s\t\t\t\t %.2f\t\t\t %.2f\t\t\t %.1f\t\t %.2f", nombreFormateado(), tipo(),
         getTarifaPorHora(), 0.0, 0.0, 0.0) + "%";
 
   }
@@ -92,7 +92,7 @@ class EmpleadoPorHora extends Empleado {
   @Override
   public String lineaEmpleado() {
     // Crear la linea con los datos
-    return String.format("%s\t\t%s\t\t\t %.2f\t\t\t %.2f\t\t\t %.2f\t\t %.2f", nombreFormateado(), tipo(),
+    return String.format("%s\t\t%s\t\t\t %.2f\t\t\t %.2f\t\t\t %.1f\t\t %.2f", nombreFormateado(), tipo(),
         getTarifaPorHora(), tarifaHrExtra, 0.0, 0.0) + "%";
   }
 }
@@ -121,7 +121,7 @@ class EmpleadoAsalariado extends Empleado {
   @Override
   public String lineaEmpleado() {
     // Crear la linea con los datos
-    return String.format("%s\t\t%s\t\t\t %.2f\t\t\t %.2f\t\t\t %.2f\t\t %.2f", nombreFormateado(), tipo(),
+    return String.format("%s\t\t%s\t\t\t %.2f\t\t\t %.2f\t\t\t %.1f\t\t %.2f", nombreFormateado(), tipo(),
         0.0, 0.0, salarioMensualFijo, 0.0) + "%";
   }
 }
