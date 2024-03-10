@@ -10,7 +10,29 @@ public class Main {
     ArrayList<Empleado> listaEmpleados = new ArrayList<>();
     ArrayList<Nomina> listaNominas = new ArrayList<>();
 
-    String agregarOtroEmpleado = "Y";
+    // BORRAR DESDE AQUI
+    Empleado tempEmpleadoNormal = new Empleado("Jose", "Avila", 10);
+    Nomina tempNominaNormal = new Nomina(tempEmpleadoNormal, 20, 0, 0);
+    listaEmpleados.add(tempEmpleadoNormal);
+    listaNominas.add(tempNominaNormal);
+
+    Empleado tempEmpleadoPorHoras = new EmpleadoPorHora("Caro", "Martinez", 10, 15);
+    Nomina tempNominaPorHoras = new Nomina(tempEmpleadoPorHoras, 30, 14, 0);
+    listaEmpleados.add(tempEmpleadoPorHoras);
+    listaNominas.add(tempNominaPorHoras);
+
+    Empleado tempEmpleadoAsalariado = new EmpleadoAsalariado("Natalia", "Martinez", 0, 2000);
+    Nomina tempNominaAsalariado = new Nomina(tempEmpleadoAsalariado, 0, 0, 0);
+    listaEmpleados.add(tempEmpleadoAsalariado);
+    listaNominas.add(tempNominaAsalariado);
+
+    Empleado tempEmpleadoComision = new EmpleadoPorComision("Isabela", "Martinez", 0, 10);
+    Nomina tempNominaComision = new Nomina(tempEmpleadoComision, 0, 0, 50000);
+    listaEmpleados.add(tempEmpleadoComision);
+    listaNominas.add(tempNominaComision);
+    // BORRAR HASTA AQUI
+
+    String agregarOtroEmpleado = "N"; // Cambiar a Y
 
     while (agregarOtroEmpleado.equals("Y")) {
       System.out.print("Ingrese los datos del empleado: \n");
@@ -117,8 +139,12 @@ public class Main {
 
     System.out.println(datosEmpleados);
 
+    // for loop para nominas
+    // llamar el metodo mostrarNomina
+    for (Nomina nomina : listaNominas) {
+      String nominaEmple = nomina.mostrarNomina();
+      System.out.println(nominaEmple);
+    }
+
   }
-
-  // imprimir el listado de empleador para comprobar que el sistema funciona
-
 }
