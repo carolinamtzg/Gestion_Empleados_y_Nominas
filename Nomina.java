@@ -1,12 +1,12 @@
 public class Nomina {
   // atributos:
   private Empleado empleado;
-  private int horasTrabajadas;
-  private int horasExtra;
+  private float horasTrabajadas;
+  private float horasExtra;
   private float ventasTotales;
 
   // contructor:
-  public Nomina(Empleado empleado, int horasTrabajadas, int horasExtra, float ventasTotales) {
+  public Nomina(Empleado empleado, float horasTrabajadas, float horasExtra, float ventasTotales) {
     this.empleado = empleado;
     this.horasTrabajadas = horasTrabajadas;
     this.horasExtra = horasExtra;
@@ -15,11 +15,11 @@ public class Nomina {
 
   // metodos getters:
 
-  public int getHorasTrabajadas() {
+  public float getHorasTrabajadas() {
     return horasTrabajadas;
   }
 
-  public int getHorasExtra() {
+  public float getHorasExtra() {
     return horasExtra;
   }
 

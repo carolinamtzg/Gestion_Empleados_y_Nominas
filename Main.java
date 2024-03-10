@@ -8,6 +8,7 @@ public class Main {
 
     // empleados
     ArrayList<Empleado> listaEmpleados = new ArrayList<>();
+    ArrayList<Nomina> listaNominas = new ArrayList<>();
 
     String agregarOtroEmpleado = "Y";
 
@@ -36,9 +37,14 @@ public class Main {
         Float tarifaPorHora = GestionarValidaciones.pedirNumero("Tarifa por Hora: ",
             "El valor tiene que ser positivo.");
 
+        Empleado empleadoNormal = new Empleado(nombreEmpleado, apellidoEmpleado, tarifaPorHora);
         // agregando empleado normal a la lista de empleados:
-        listaEmpleados.add(new Empleado(nombreEmpleado, apellidoEmpleado, tarifaPorHora));
-
+        listaEmpleados.add(empleadoNormal);
+        // nomina con numero de horasTrabajadas
+        float horasTrabajadas = GestionarValidaciones.pedirNumero("Horas trabajadas: ",
+            "El valor tiene que ser positivo.");
+        Nomina nominaNormal = new Nomina(empleadoNormal, horasTrabajadas, 0, 0);
+        listaNominas.add(nominaNormal);
       }
 
       if (tipoEmpleado.equals(porHoras)) {
@@ -48,8 +54,17 @@ public class Main {
         float tarifaHrExtra = GestionarValidaciones.pedirNumero("Tarifa Hr Extra: ",
             "Tipo de empleado no válido. Por favor, ingrese un tipo válido.");
 
+        Empleado empleadoPorHoras = new EmpleadoPorHora(nombreEmpleado, apellidoEmpleado, tarifaPorHora, tarifaHrExtra);
         // agregando empleadoPorHora a la lista de empleados:
-        listaEmpleados.add(new EmpleadoPorHora(nombreEmpleado, apellidoEmpleado, tarifaPorHora, tarifaHrExtra));
+        listaEmpleados.add(empleadoPorHoras);
+        // nomina con numero de horasTrabajadas y horasExtra
+        float horasTrabajadas = GestionarValidaciones.pedirNumero("Horas trabajadas: ",
+            "El valor tiene que ser positivo.");
+        float horasExtra = GestionarValidaciones.pedirNumero("Horas extra trabajadas: ",
+            "El valor tiene que ser positivo.");
+        Nomina nominaPorHoras = new Nomina(empleadoPorHoras, horasTrabajadas, horasExtra, 0);
+        listaNominas.add(nominaPorHoras);
+
       }
 
       if (tipoEmpleado.equals(asalariado)) {
@@ -57,14 +72,25 @@ public class Main {
             "Tipo de empleado no válido. Por favor, ingrese un tipo válido.");
 
         // agregando cada empleado asalariado a la lista de empleados:
-        listaEmpleados.add(new EmpleadoAsalariado(nombreEmpleado, apellidoEmpleado, 0, salarioMensualFijo));
+        Empleado empleadoAsalariado = new EmpleadoAsalariado(nombreEmpleado, apellidoEmpleado, 0, salarioMensualFijo);
+        listaEmpleados.add(empleadoAsalariado);
+        // nomina con salario:
+        Nomina nominaAsalariado = new Nomina(empleadoAsalariado, 0, 0, 0);
+        listaNominas.add(nominaAsalariado);
       }
       if (tipoEmpleado.equals(porComision)) {
         float porcentajeComision = GestionarValidaciones.pedirNumero("Porcentaje Comisión: ",
             "Tipo de empleado no válido. Por favor, ingrese un tipo válido.");
 
         // agregando cada empleado por comision a la lista de empleados:
-        listaEmpleados.add(new EmpleadoPorComision(nombreEmpleado, apellidoEmpleado, 0, porcentajeComision));
+        Empleado empleadoComision = new EmpleadoPorComision(nombreEmpleado, apellidoEmpleado, 0, porcentajeComision);
+        listaEmpleados.add(empleadoComision);
+        // preguntar y validar ventasTotales:
+        float ventasTotales = GestionarValidaciones.pedirNumero("Ventas Totales: ",
+            "El valor tiene que ser positivo.");
+        // nomina con ventasTotales:
+        Nomina nominaComision = new Nomina(empleadoComision, 0, 0, ventasTotales);
+        listaNominas.add(nominaComision);
       }
 
       System.out.print("¿Desea agregar otro empleado? (Y/N): ");
@@ -90,8 +116,6 @@ public class Main {
     String datosEmpleados = sb.toString();
 
     System.out.println(datosEmpleados);
-
-    // nominas
 
   }
 
