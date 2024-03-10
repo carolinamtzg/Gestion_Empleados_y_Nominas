@@ -1,5 +1,3 @@
-import java.util.List;
-
 /* 
 Clase Base Empleado:
 
@@ -37,43 +35,34 @@ public class Empleado {
   }
 
   public String tipo() {
-    return "Empleado normal";
+    return "Normal";
   }
 
-  public float tarifaPorHora() {
+  public float getTarifaPorHora() {
     return tarifaPorHora;
   }
 
-  // metodos:
+  public String lineaEmpleado() {
+    // Crear la linea con los datos
+    return String.format("%s\t\t%s\t\t\t\t %.2f\t\t\t %.2f\t\t\t %.2f\t\t %.2f", nombreFormateado(), tipo(),
+        getTarifaPorHora(), 0.0, 0.0, 0.0) + "%";
 
-  // metodo para formatear el listado de empleados:
-  public String mostrarEmpleados() {
-
-    StringBuilder sb = new StringBuilder();
-
-    sb.append("\t 1\t   2\t     3\t       4\t 5\t   6\t     7\t\n");
-    sb.append("1234567890123456789012345678901234567890123456789012345678901234567890\n");
-    sb.append("\n");
-    sb.append("Nombre\t" + "Tipo\t" + "\tTarifa Hora\t" + "\tTarifa H.Extra\t" + "\tSalario\t" + "\tPorcentaje\t\n");
-    sb.append("---------------------------------------------------------------\n");
-
-    // iterar sobre la lista de empleados:
-    for (Empleado empleado : listaEmpleados) {
-
-    }
-    // agregar la línea para cada empleado:
-    // sb.append(String.format("%s\t\t%d\t\t%.1f\t\t%.1f\n",
-    // Empleado.nombreCompleto(),
-    // Empleado.tipo(),
-    // Empleado.tarifaPorHora(),
-    // Empleado.tarifaHrExtra(),
-    // Empleado.salarioMensualFijo(),
-    // Empleado.EmpleadoPorComision()
-    // ));
-
-    return sb.toString();
   }
 
+  public String nombreFormateado() {
+    String nombre = nombreCompleto();
+
+    if (nombre.length() > 10) {
+      nombre = nombre.substring(0, 10);
+    }
+
+    if (nombre.length() < 10) {
+      nombre = String.format("%-10.10s", nombre);
+    }
+    // Format the string to ensure it's exactly 3 characters long, padding with
+    // spaces if necessary
+    return nombre;
+  }
 }
 
 // Sub-clase EmpleadoPorHora:
@@ -90,9 +79,15 @@ class EmpleadoPorHora extends Empleado {
 
   @Override
   public String tipo() {
-    return "Empleado por horas";
+    return "Por horas";
   }
 
+  @Override
+  public String lineaEmpleado() {
+    // Crear la linea con los datos
+    return String.format("%s\t\t%s\t\t\t %.2f\t\t\t %.2f\t\t\t %.2f\t\t %.2f", nombreFormateado(), tipo(),
+        getTarifaPorHora(), tarifaHrExtra, 0.0, 0.0) + "%";
+  }
 }
 
 // Sub-clase EmpleadoAsalariado:
@@ -108,7 +103,14 @@ class EmpleadoAsalariado extends Empleado {
 
   @Override
   public String tipo() {
-    return "Empleado Asalariado";
+    return "Asalariado";
+  }
+
+  @Override
+  public String lineaEmpleado() {
+    // Crear la linea con los datos
+    return String.format("%s\t\t%s\t\t\t %.2f\t\t\t %.2f\t\t\t %.2f\t\t %.2f", nombreFormateado(), tipo(),
+        0.0, 0.0, salarioMensualFijo, 0.0) + "%";
   }
 }
 
@@ -132,6 +134,13 @@ class EmpleadoPorComision extends Empleado {
 
   @Override
   public String tipo() {
-    return "Empleado A Comisión";
+    return "A Comisión";
+  }
+
+  @Override
+  public String lineaEmpleado() {
+    // Crear la linea con los datos
+    return String.format("%s\t\t%s\t\t\t %.2f\t\t\t %.2f\t\t\t %.2f\t\t %.2f", nombreFormateado(), tipo(),
+        0.0, 0.0, 0.0, porcentajeComision) + "%";
   }
 }

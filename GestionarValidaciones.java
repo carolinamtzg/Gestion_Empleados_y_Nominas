@@ -15,7 +15,7 @@ public class GestionarValidaciones {
     boolean pedirValor = true;
     while (pedirValor) {
       System.out.print(nombreValor);
-      valor = scanner.nextLine().trim();
+      valor = scanner.next().trim();
       // " a a ".trim() == "a a"
       // " ".trim() == ""
 
@@ -68,6 +68,6 @@ public class GestionarValidaciones {
         System.out.println();
       }
     }
-    return valor;
+    return valor.toLowerCase();
   }
 }
